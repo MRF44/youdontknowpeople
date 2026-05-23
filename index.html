@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>You Don't Know People</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- FUTURE ANALYTICS SCRIPT GOES HERE -->
+  </head>
+  <body>
+    <main class="app" aria-live="polite">
+      <nav class="language-toggle" aria-label="Language">
+        <button class="language-button" id="languageEnButton" type="button">EN</button>
+        <span>·</span>
+        <button class="language-button" id="languageEsButton" type="button">ES</button>
+      </nav>
+      <section class="screen screen-start is-active" id="startScreen">
+        <h1>You Don't Know People</h1>
+        <p class="taunt">you think you do.</p>
+        <div class="rules">
+          <p>guess what most people said.</p>
+          <p>3 lives.</p>
+          <p>miss by more than 20 and lose a life.</p>
+        </div>
+        <p class="best-line" id="bestLine" hidden></p>
+        <button class="plain-button" id="startButton">PROVE IT</button>
+        <footer class="human-footer">
+          made by one person.<br />
+          if this breaks, that's also data.
+        </footer>
+      </section>
+
+      <section class="screen screen-game" id="gameScreen">
+        <!-- FUTURE NON-INTRUSIVE AD SLOT GOES HERE ONLY AFTER VALIDATION -->
+        <header class="status" aria-label="game status">
+          <span id="roundsLabel">ROUNDS: 0</span>
+          <span id="livesLabel">&hearts; &hearts; &hearts;</span>
+        </header>
+
+        <div class="question-wrap" id="questionWrap">
+          <p class="prompt-label">guess the % who said yes</p>
+          <h2 id="questionText"></h2>
+
+          <div class="guess-row">
+            <output id="guessOutput" for="guessSlider">50%</output>
+            <input
+              id="guessSlider"
+              type="range"
+              min="0"
+              max="100"
+              value="50"
+              step="1"
+              aria-label="Guess percentage"
+            />
+          </div>
+
+          <button class="plain-button lock" id="lockButton">LOCK IT</button>
+        </div>
+
+        <div class="reveal-wrap" id="revealWrap" hidden>
+          <div class="real-hit" id="humanRead">62%</div>
+          <p class="result-line" id="resultLine">most people said yes.</p>
+          <p class="guess-line" id="guessLine"></p>
+          <p class="damage-line" id="damageLine"></p>
+          <p class="small-line" id="judgementText"></p>
+          <p class="error-line" id="errorLine"></p>
+          <button class="plain-button" id="nextButton">NEXT</button>
+        </div>
+      </section>
+
+      <section class="screen screen-over" id="gameOverScreen">
+        <p class="kicker">Game over</p>
+        <h2 id="finalTitle">You died at round 0.</h2>
+        <p class="subcopy" id="finalStats"></p>
+        <p class="verdict-line" id="verdictLine">you thought you knew people.<br />you did not.</p>
+        <p class="record-line" id="recordLine"></p>
+        <div class="end-actions">
+          <button class="plain-button" id="copyButton">COPY DAMAGE</button>
+          <button class="text-button" id="againButton">AGAIN</button>
+        </div>
+        <p class="copied" id="copiedText" hidden>Copied.</p>
+        <div class="submit-question">
+          <button class="question-link" id="submitQuestionToggle">
+            got a question that would expose people?<br />
+            send it.
+          </button>
+          <form class="question-form" id="submitQuestionForm" hidden>
+            <textarea id="submittedQuestionText" placeholder="write the question"></textarea>
+            <input
+              id="submittedQuestionPercent"
+              type="number"
+              min="0"
+              max="100"
+              placeholder="what % do you think would say yes?"
+            />
+            <button class="plain-button" id="sendQuestionButton" type="submit">SEND QUESTION</button>
+          </form>
+          <p class="submitted-note" id="submittedQuestionNote" hidden>
+            sent. if it's good, it might hurt people later.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
